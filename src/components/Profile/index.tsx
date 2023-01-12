@@ -3,39 +3,61 @@ import linkIcon from "../../assets/icons/link.svg";
 import githubIcon from "../../assets/icons/github-brand.svg";
 import buildingIcon from "../../assets/icons/building.svg";
 import userGroupIcon from "../../assets/icons/user-group.svg";
+import axios from "axios";
+import { useEffect, useState } from "react";
+
+interface User {
+  avatar_url: string;
+  name: string;
+  bio: string;
+  followers: number;
+  login: string;
+  company: string | null;
+  html_url: string;
+}
 
 export function Profile() {
+  const [user, setUser] = useState<User>({} as User);
+
+  async function fetchProfile() {
+    const response = await axios.get(
+      "https://api.github.com/users/douglasrochak"
+    );
+
+    setUser(response.data);
+    // console.log(response.data);
+  }
+
+  useEffect(() => {
+    fetchProfile();
+  }, []);
+
   return (
     <ProfileContainer>
-      <Avatar
-        src="https://avatars.githubusercontent.com/u/64942084?v=4"
-        alt=""
-      />
+      <Avatar src={user.avatar_url} alt="" />
       <Content>
         <Title>
-          <strong>Cameron Williamson</strong>
-          <Link>
+          <strong>{user.name}</strong>
+          <Link href={user.html_url}>
             github
             <img src={linkIcon} alt="" />
           </Link>
         </Title>
-        <span>
-          Tristique volutpat pulvinar vel massa, pellentesque egestas. Eu
-          viverra massa quam dignissim aenean malesuada suscipit. Nunc, volutpat
-          pulvinar vel mass.
-        </span>
+        <span>{user.bio}</span>
         <Info>
           <span>
             <img src={githubIcon} alt="" />
-            cameronwll
+            {user.login}
           </span>
-          <span>
-            <img src={buildingIcon} alt="" />
-            Rocketseat
-          </span>
+          {user.company && (
+            <span>
+              <img src={buildingIcon} alt="" />
+              {user.company}
+            </span>
+          )}
           <span>
             <img src={userGroupIcon} alt="" />
-            32 seguidores
+            {user.followers} seguidores
           </span>
         </Info>
       </Content>

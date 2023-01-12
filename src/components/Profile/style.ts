@@ -31,7 +31,7 @@ export const Title = styled.div`
   }
 `;
 
-export const Link = styled.span`
+export const Link = styled.a`
   display: flex;
   align-items: center;
   font-weight: bold;
@@ -48,10 +48,12 @@ export const Link = styled.span`
 `;
 
 export const Content = styled.div`
+  width: 100%;
   display: flex;
   flex-direction: column;
   & > span {
     margin-bottom: 1.5rem;
+    height: 100%;
     font-family: "Nunito";
     line-height: 160%;
     color: ${(props) => props.theme["base-text"]};
