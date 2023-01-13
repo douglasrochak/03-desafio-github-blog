@@ -41,4 +41,13 @@ export const InfoBox = styled.div`
 
 export const Content = styled.div`
   padding: 2.5rem 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+
+  ul {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
 `;

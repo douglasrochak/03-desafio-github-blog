@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import { Profile } from "../../components/Profile";
 import { PostsContext } from "../../contexts/PostsContext";
 import { PostCard } from "./components/PostCard";
-import { SearchForm } from "./components/SearchForm";
+import { SearchForm } from "../../components/SearchForm";
 import { Content, Info, PostList, HomeContainer } from "./style";
 
 export function Home() {
@@ -14,7 +14,7 @@ export function Home() {
       <Content>
         <Info>
           <strong>Publicações</strong>
-          <span>6 publicações</span>
+          <span>{posts.length} publicações</span>
         </Info>
         <SearchForm />
         <PostList>

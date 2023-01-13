@@ -3,6 +3,7 @@ import styled from "styled-components";
 export const PostCardContainer = styled.div`
   display: flex;
   flex-direction: column;
+  height: 100%;
   max-height: 260px;
 
   background-color: ${(props) => props.theme["base-post"]};

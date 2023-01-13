@@ -5,10 +5,12 @@ interface Post {
   number: number;
   title: string;
   body: string;
+  total_count: number;
 }
 
 interface PostsContextType {
   posts: Post[];
+  fetchPosts: (query?: string) => Promise<void>;
 }
 
 export const PostsContext = createContext({} as PostsContextType);
@@ -36,6 +38,8 @@ export function PostsContextProvier({ children }: PostsContextProvierProps) {
   }, []);
 
   return (
-    <PostsContext.Provider value={{ posts }}>{children}</PostsContext.Provider>
+    <PostsContext.Provider value={{ posts, fetchPosts }}>
+      {children}
+    </PostsContext.Provider>
   );
 }

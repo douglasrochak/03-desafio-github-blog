@@ -25,7 +25,6 @@ export function Profile() {
     );
 
     setUser(response.data);
-    // console.log(response.data);
   }
 
   useEffect(() => {
@@ -38,7 +37,7 @@ export function Profile() {
       <Content>
         <Title>
           <strong>{user.name}</strong>
-          <Link href={user.html_url}>
+          <Link target="_blank" href={user.html_url}>
             github
             <img src={linkIcon} alt="" />
           </Link>
