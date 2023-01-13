@@ -20,20 +20,45 @@ export const PostInfo = styled.div`
     justify-content: space-between;
 
     margin-bottom: 1.25rem;
+
+    span > a {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+
+      font-weight: bold;
+      font-size: 0.75rem;
+      line-height: 160%;
+      text-transform: uppercase;
+      color: ${(props) => props.theme.blue};
+
+      &:hover {
+        text-decoration: underline;
+      }
+    }
   }
 `;
 
 export const Title = styled.strong`
-  margin-bottom: 0.5rem;
-
-  font-weight: 700;
-  font-size: 24px;
+  font-weight: bold;
+  font-size: 1.5rem;
   line-height: 130%;
-  /* Base/Title */
-  color: #e7edf4;
+  color: ${(props) => props.theme["base-title"]};
 `;
 
 export const InfoBox = styled.div`
+  margin-top: 0.75rem;
+  display: flex;
+
+  span {
+    display: flex;
+    align-items: center;
+  }
+
+  span > img {
+    margin-right: 0.5rem;
+  }
+
   span:not(:last-child) {
     margin-right: 1rem;
   }

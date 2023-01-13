@@ -40,6 +40,10 @@ export const Link = styled.a`
   text-transform: uppercase;
   color: ${(props) => props.theme.blue};
 
+  &:hover {
+    text-decoration: underline;
+  }
+
   img {
     margin-left: 0.5rem;
     width: 0.75rem;

@@ -5,6 +5,11 @@ import { Link, useParams } from "react-router-dom";
 import { api } from "../../lib/axios";
 import { dateRelativeToNow } from "../../utils/date-formatter";
 import { Content, InfoBox, PostContainer, PostInfo, Title } from "./style";
+import iconLeftArrow from "../../assets/icons/left-arrow.svg";
+import iconLink from "../../assets/icons/link.svg";
+import iconGithub from "../../assets/icons/github-brand.svg";
+import iconCalendar from "../../assets/icons/calendar.svg";
+import iconComment from "../../assets/icons/comment.svg";
 
 interface PostData {
   title: string;
@@ -37,21 +42,32 @@ export function Post() {
       <PostInfo>
         <nav>
           <span>
-            <Link to={"/"}>voltar</Link>
+            <Link to={"/"}>
+              <img src={iconLeftArrow} alt="" /> voltar
+            </Link>
           </span>
           <span>
             <a target="_blank" href={post.html_url} rel="noreferrer">
-              ver no github
+              ver no github <img src={iconLink} alt="" />
             </a>
           </span>
         </nav>
         <Title>{post.title}</Title>
         <InfoBox>
-          <span>{post.user && post.user.login}</span>
           <span>
+            <img src={iconGithub} alt="" />
+            {post.user && post.user.login}
+          </span>
+
+          <span>
+            <img src={iconCalendar} alt="" />
             {post.created_at && dateRelativeToNow(new Date(post.created_at))}
           </span>
-          <span>comentários {post.comments}</span>
+
+          <span>
+            <img src={iconComment} alt="" />
+            comentários {post.comments}
+          </span>
         </InfoBox>
       </PostInfo>
       <Content>

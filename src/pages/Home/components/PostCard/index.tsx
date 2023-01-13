@@ -1,4 +1,5 @@
-import { PostCardContainer, Title } from "./style";
+import { Content, PostCardContainer, Title } from "./style";
+import ReactMarkdown from "react-markdown";
 
 interface PostCardProps {
   title: string;
@@ -11,7 +12,9 @@ export function PostCard({ title, body }: PostCardProps) {
         <strong>{title}</strong>
         <span>Há 1 dia</span>
       </Title>
-      <p>{body}</p>
+      <Content>
+        <ReactMarkdown rawSourcePos>{body}</ReactMarkdown>
+      </Content>
     </PostCardContainer>
   );
 }
